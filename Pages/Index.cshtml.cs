@@ -12,16 +12,8 @@ public class IndexModel : PageModel
         _logger = logger;
     }
 
-    public void OnGet()
+    public IActionResult OnGet()
     {
-        var user = HttpContext.Session.GetString("user");
-        if (user != null)
-        {
-            Response.Redirect("/Chat");
-        }
-        else
-        {
-            Response.Redirect("/Login");
-        }
+        return RedirectToPage("/Login/login");
     }
 }
