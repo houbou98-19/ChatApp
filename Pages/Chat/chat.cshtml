@@ -1,0 +1,23 @@
+@page
+@model ChatModel
+
+<h2>Welcome, @Model.Username!</h2>
+
+<div id="chatWindow" style="height: 400px; border: 1px solid #000; padding: 10px; overflow-y: scroll;">
+    <!-- Chat messages will go here -->
+</div>
+
+<input type="text" id="messageInput" placeholder="Type your message here..." />
+<button id="sendButton">Send</button>
+
+<script>
+    document.getElementById('sendButton').addEventListener('click', function() {
+        var messageInput = document.getElementById('messageInput');
+        var chatWindow = document.getElementById('chatWindow');
+        
+        if (messageInput.value.trim() !== '') {
+            chatWindow.innerHTML += '<p><b>@Model.Username:</b> ' + messageInput.value + '</p>';
+            messageInput.value = '';
+        }
+    });
+</script>
