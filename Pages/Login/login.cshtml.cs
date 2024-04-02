@@ -6,7 +6,7 @@ namespace ChatApp.Pages;
 public class LoginModel : PageModel
 {
     [BindProperty]
-    public string Username { get; set; }
+    public string? Username { get; set; }
 
     public void OnGet()
     {
@@ -16,7 +16,8 @@ public class LoginModel : PageModel
     {
         if (!string.IsNullOrEmpty(Username))
         {
-            return RedirectToPage("/Chat/Chat", new { username = Username });
+            HttpContext.Session.SetString("username", Username);
+            return RedirectToPage("/Chat/Chat");
         }
 
         return Page();

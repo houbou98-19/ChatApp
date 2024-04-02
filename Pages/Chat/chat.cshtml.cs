@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace ChatApp.Pages;
 public class ChatModel : PageModel
 {
-    public string Username { get; set; }
+    public string? Username { get; set; }
 
-    public void OnGet(string username)
+    public void OnGet()
     {
-        Username = username;
+        Username = HttpContext.Session.GetString("username");
+        // Use the username variable as needed
     }
 }
