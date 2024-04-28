@@ -17,7 +17,7 @@ public class LoginModel : PageModel
         if (!string.IsNullOrEmpty(Username))
         {
             HttpContext.Session.SetString("username", Username);
-            return RedirectToPage("/Chat/Chat");
+            return RedirectToPage("/index");
         }
 
         return Page();
